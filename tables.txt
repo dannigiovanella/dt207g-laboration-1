@@ -1,0 +1,11 @@
+
+Tabell Kurser för PostgreSQL
+
+Course (
+course_id SERIAL PRIMARY KEY NOT NULL, 
+coursecode VARCHAR(15) NOT NULL,
+coursename TEXT NOT NULL,
+progression CHAR(1) NOT NULL,
+syllabus TEXT NOT NULL,
+created TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+)
