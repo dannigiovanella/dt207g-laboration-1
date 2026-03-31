@@ -1,0 +1,29 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+    color: #222020;
+    background-color: rgb(245, 236, 225);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+nav{
+    display: flex;
+    gap: 3rem;
+}
+
+nav li{
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+}
