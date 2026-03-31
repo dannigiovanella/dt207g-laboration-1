@@ -1,0 +1,29 @@
+{
+  "name": "backend_labb_1",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000d\u0000t\u00002\u00000\u00007\u0000g\u0000-\u0000l\u0000a\u0000b\u0000o\u0000r\u0000a\u0000t\u0000i\u0000o\u0000n\u0000-\u00001\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dannigiovanella/dt207g-laboration-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dannigiovanella/dt207g-laboration-1/issues"
+  },
+  "homepage": "https://github.com/dannigiovanella/dt207g-laboration-1#readme",
+  "dependencies": {
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "pg": "^8.20.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
