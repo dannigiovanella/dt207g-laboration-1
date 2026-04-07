@@ -43,7 +43,7 @@ cvApp.get("/about", async (request, response) => {
 // VY för att lägga till kurs
 cvApp.get("/add", async (request, response) => {
   response.render("add", {
-    error: null,
+    errors: {},
     old: {}
   });
 });
@@ -53,9 +53,38 @@ cvApp.get("/add", async (request, response) => {
 cvApp.post("/add", async (request, response) => {
   const { coursecode, coursename, progression, syllabus } = request.body;
 
-  if (!coursecode || !coursename || !progression || !syllabus) {
+  //Kontroll för om fält blivit ifyllda
+  let errors = {};
+  let hasError = false;
+
+  // Kurskod
+  if (!coursecode) {
+    errors.coursecode = "Kurskod måste fyllas i";
+    hasError = true;
+  }
+
+  // Kursnamn
+  if (!coursename) {
+    errors.coursename = "Kursnamn måste fyllas i";
+    hasError = true;
+  }
+
+  // Progression
+  if (!progression) {
+    errors.progression = "Välj nivå";
+    hasError = true;
+  }
+
+  // Syllabus
+  if (!syllabus) {
+    errors.syllabus = "Saknas länk till kursplan";
+    hasError = true;
+  }
+
+  // Om något är fel så skickas man tillbaka till formuläret
+  if (hasError) {
     return response.render("add", {
-      error: "Fyll i alla fält",
+      errors,
       old: request.body
     });
   }
@@ -84,7 +113,7 @@ cvApp.post("/delete/:id", async (request, response) => {
   try {
     await db.query("DELETE FROM courses WHERE course_id = $1", [id]);
     response.redirect("/");
-    
+
   } catch (error) {
     console.log("Delete error", error);
     response.redirect("/");

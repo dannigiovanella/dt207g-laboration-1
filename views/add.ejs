@@ -16,32 +16,64 @@
         <main>
             <section>
 
-                        <form action="/add" method="POST">
+                <form action="/add" method="POST">
 
-                            <label for="coursecode">Kurskod</label>
-                            <input id="coursecode" name="coursecode" type="text" placeholder="ex: DT200g"
-                                value="<%= old?.coursecode || '' %>">
+                    <label for="coursecode">Kurskod</label>
+                    <input id="coursecode" name="coursecode" type="text" placeholder="ex: DT200g"
+                        value="<%= old?.coursecode || '' %>" class="<%= errors?.coursecode ? 'error' : '' %>">
+                    <% if (errors?.coursecode) { %>
+                        <p class="errormessage">
+                            <%= errors.coursecode %>
+                        </p>
+                        <% } %>
 
                             <label for="coursename">Kursnamn</label>
                             <input id="coursename" name="coursename" type="text" placeholder="ex: Backendutveckling"
-                                value="<%= old?.coursename || '' %>">
+                                value="<%= old?.coursename || '' %>" class="<%= errors?.courname ? 'error' : '' %>">
 
-                            <label for="progression">Progression</label>
-                            <input id="progression" name="progression" type="text" placeholder="A, B eller C"
-                                value="<%= old?.progression || '' %>">
-
-                            <label for="syllabus">Kursplan</label>
-                            <input type="url" name="syllabus" placeholder="ex: https://www.miun.se/DT224G/">
-
-                            <% if (error) { %>
+                            <% if (errors?.coursename) { %>
                                 <p class="errormessage">
-                                    <%= error %>
+                                    <%= errors.coursename %>
                                 </p>
                                 <% } %>
 
-                                    <button type="submit">Lägg till kurs</button>
+                                    <label for="progression">Progression</label>
+                                    <select id="progression" name="progression" type="text" placeholder="A, B eller C"
+                                        value="<%= old?.progression || '' %>"
+                                        class="<%= errors?.progression ? 'error' : '' %>">
 
-                        </form>
+
+                                        <option value="">Välj progression</option>
+                                        <option value="A" <%=old?.progression==="A" ? "selected" : "" %>>A
+                                        </option>
+                                        <option value="B" <%=old?.progression==="B" ? "selected" : "" %>>B
+                                        </option>
+                                        <option value="C" <%=old?.progression==="C" ? "selected" : "" %>>C
+                                        </option>
+                                    </select>
+
+                                    <% if (errors?.progression) { %>
+                                        <p class="errormessage">
+                                            <%= errors.progression %>
+                                        </p>
+                                        <% } %>
+
+
+                                            <label for="syllabus">Kursplan</label>
+                                            <input type="url" name="syllabus"
+                                                placeholder="Länk - ex: https://www.miun.se/DT224G/"
+                                                value="<%= old?.syllabus || '' %>"
+                                                class="<%= errors?.syllabus ? 'error' : '' %>">
+
+                                            <% if (errors?.syllabus) { %>
+                                                <p class="errormessage">
+                                                    <%= errors.syllabus %>
+                                                </p>
+                                                <% } %>
+
+                                                    <button type="submit">Lägg till kurs</button>
+
+                </form>
 
 
 

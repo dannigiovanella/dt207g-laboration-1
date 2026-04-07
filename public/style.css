@@ -67,10 +67,12 @@ nav a {
     text-decoration: none;
 }
 
-.errormessage {
-    color: rgb(211, 40, 10);
-    font-size: 1.1rem;
-    font-weight: 600;
+.error {
+  border: 2px solid rgb(185, 29, 29);
+}
+
+.errormessage{
+    color: rgb(185, 29, 29);
 }
 
 form {
