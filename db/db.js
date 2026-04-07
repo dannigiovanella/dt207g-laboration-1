@@ -1,0 +1,30 @@
+
+
+const { Client } = require("pg");
+
+//Hämtar data från .env-fil med rätt sökväg
+const path = require("path");
+require("dotenv").config({ path: require("path").resolve(__dirname, "../.env") 
+});
+
+
+//Databasanslutning
+const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
+
+
+//Funktion för att connecta 
+async function connect() {
+  try {
+    await client.connect();
+    console.log("Connected");
+  } catch (err) {
+    console.log("Error", err);
+  }
+}
+
+connect();
