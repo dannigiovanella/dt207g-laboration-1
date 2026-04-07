@@ -13,6 +13,28 @@
     <!--Header med huvudrubrik och navigation-->
     <%- include("partials/header") %>
 
+        <main>
+            <section>
+                <form action="/add" method="POST">
+
+                    <label for="coursecode">Kurskod</label>
+                    <input id="coursecode" name="coursecode" type="text" placeholder="tex. DT200g"/>
+
+                    <label for="coursename">Kursnamn</label>
+                    <input id="coursename" name="coursename" type="text" placeholder="tex. Backendutveckling"/>
+
+                    <label for="progression">Progression</label>
+                    <input id="progression" name="progression" type="text" placeholder="A, B eller C"/>
+
+                    <label for="syllabus">Kursplan</label>
+                    <textarea id="syllabus" name="syllabus" placeholder="Beskriv kursens innehåll..."></textarea>
+
+                    <button type="submit">Lägg till kurs</button>
+
+                </form>
+            </section>
+        </main>
+
 </body>
 
 </html>

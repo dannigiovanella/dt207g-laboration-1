@@ -1,11 +1,10 @@
 const { Client } = require("pg");
-//Hämtar data från .env-fil med rätt sökväg
+//Hämtar data från .env-fil 
 const path = require("path");
-require("dotenv").config({ path: require("path").resolve(__dirname, "../.env") 
-});
-const express =  require("express");
-const cvApp = express(); 
-const port = 3000;
+require("dotenv").config();
+
+const express = require("express");
+const cvApp = express();
 
 //View enginge: EJS
 cvApp.set("view engine", "ejs");
@@ -23,22 +22,21 @@ const client = new Client({
 });
 
 
-
 // Routing till varje view
-cvApp.get("/", (request, response) => {
+cvApp.get("/", async (request, response) => {
     response.render("index");
 })
 
-cvApp.get("/about", (request, response) => {
+cvApp.get("/about", async (request, response) => {
     response.render("about");
 })
 
-cvApp.get("/add", (request, response) => {
+cvApp.get("/add", async (request, response) => {
     response.render("add");
 })
 
 
 //Starta server
-cvApp.listen(port, () => {
-    console.log("server startad på port" + port)
+cvApp.listen(process.env.PORT, () => {
+    console.log("server startad på port" + "" + process.env.PORT);
 });
