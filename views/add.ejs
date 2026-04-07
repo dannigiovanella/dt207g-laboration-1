@@ -18,20 +18,23 @@
                 <form action="/add" method="POST">
 
                     <label for="coursecode">Kurskod</label>
-                    <input id="coursecode" name="coursecode" type="text" placeholder="tex. DT200g"/>
+                    <input id="coursecode" name="coursecode" type="text" placeholder="tex. DT200g" value="<%= old?.coursecode || '' %>">
 
                     <label for="coursename">Kursnamn</label>
-                    <input id="coursename" name="coursename" type="text" placeholder="tex. Backendutveckling"/>
+                    <input id="coursename" name="coursename" type="text" placeholder="tex. Backendutveckling" value="<%= old?.coursename || '' %>">
 
                     <label for="progression">Progression</label>
-                    <input id="progression" name="progression" type="text" placeholder="A, B eller C"/>
+                    <input id="progression" name="progression" type="text" placeholder="A, B eller C" value="<%= old?.progression || '' %>">
 
                     <label for="syllabus">Kursplan</label>
-                    <textarea id="syllabus" name="syllabus" placeholder="Beskriv kursens innehåll..."></textarea>
+                    <textarea id="syllabus" name="syllabus" placeholder="Beskriv kursens innehåll..."><%= old?.syllabus || '' %></textarea>
 
                     <button type="submit">Lägg till kurs</button>
 
                 </form>
+
+
+
             </section>
         </main>
 
