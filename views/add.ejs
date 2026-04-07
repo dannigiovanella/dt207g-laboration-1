@@ -15,23 +15,33 @@
 
         <main>
             <section>
-                <form action="/add" method="POST">
 
-                    <label for="coursecode">Kurskod</label>
-                    <input id="coursecode" name="coursecode" type="text" placeholder="tex. DT200g" value="<%= old?.coursecode || '' %>">
+                        <form action="/add" method="POST">
 
-                    <label for="coursename">Kursnamn</label>
-                    <input id="coursename" name="coursename" type="text" placeholder="tex. Backendutveckling" value="<%= old?.coursename || '' %>">
+                            <label for="coursecode">Kurskod</label>
+                            <input id="coursecode" name="coursecode" type="text" placeholder="ex: DT200g"
+                                value="<%= old?.coursecode || '' %>">
 
-                    <label for="progression">Progression</label>
-                    <input id="progression" name="progression" type="text" placeholder="A, B eller C" value="<%= old?.progression || '' %>">
+                            <label for="coursename">Kursnamn</label>
+                            <input id="coursename" name="coursename" type="text" placeholder="ex: Backendutveckling"
+                                value="<%= old?.coursename || '' %>">
 
-                    <label for="syllabus">Kursplan</label>
-                    <textarea id="syllabus" name="syllabus" placeholder="Beskriv kursens innehåll..."><%= old?.syllabus || '' %></textarea>
+                            <label for="progression">Progression</label>
+                            <input id="progression" name="progression" type="text" placeholder="A, B eller C"
+                                value="<%= old?.progression || '' %>">
 
-                    <button type="submit">Lägg till kurs</button>
+                            <label for="syllabus">Kursplan</label>
+                            <input type="url" name="syllabus" placeholder="ex: https://www.miun.se/DT224G/">
 
-                </form>
+                            <% if (error) { %>
+                                <p class="errormessage">
+                                    <%= error %>
+                                </p>
+                                <% } %>
+
+                                    <button type="submit">Lägg till kurs</button>
+
+                        </form>
 
 
 

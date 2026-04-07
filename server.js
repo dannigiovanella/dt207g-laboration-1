@@ -1,4 +1,4 @@
-const { Client } = require("pg");
+const db = require("./db/db")
 //Hämtar data från .env-fil 
 const path = require("path");
 require("dotenv").config();
@@ -13,28 +13,43 @@ cvApp.use(express.static("public"));
 cvApp.use(express.urlencoded({ extended: true }))
 
 
-//Databasanslutning
-const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
-
 
 // Routing till varje view
-cvApp.get("/", async (request, response) => {
-    response.render("index");
-})
 
+//VY för startsida - Visar kurserna
+cvApp.get("/", async (request, response) => {
+  try {
+    const result = await db.query("SELECT * FROM courses");
+
+    response.render("index", {
+      courses: result.rows
+    });
+
+  } catch (error) {
+    console.log("DB error", error);
+
+    response.render("index", {
+      courses: []
+    });
+  }
+});
+
+//VY för OM-sidan
 cvApp.get("/about", async (request, response) => {
     response.render("about");
 })
 
-cvApp.get("/add", async (request, response) => {
-    response.render("add");
-})
 
+// VY för att lägga till kurs
+cvApp.get("/add", async (request, response) => {
+  response.render("add", {
+    error: null,
+    old: {}
+  });
+});
+  
+
+//POST - Lägga till ny kurs
 cvApp.post("/add", async (request, response) => {
   const { coursecode, coursename, progression, syllabus } = request.body;
 
@@ -46,14 +61,14 @@ cvApp.post("/add", async (request, response) => {
   }
 
   try {
-    await client.query(
+    await db.query(
       "INSERT INTO courses (coursecode, coursename, progression, syllabus) VALUES ($1, $2, $3, $4)",
       [coursecode, coursename, progression, syllabus]
     );
     response.redirect("/");
   } 
-  catch (err) {
-    console.log("DB error", err);
+  catch (error) {
+    console.log("DB error", error);
 
     response.render("add", {
       error: "Något gick fel när kursen sparades",

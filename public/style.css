@@ -27,3 +27,9 @@ nav li{
 nav a {
     text-decoration: none;
 }
+
+.errormessage{
+    color: rgb(211, 40, 10);
+    font-size: 1.1rem;
+    font-weight: 600;
+}

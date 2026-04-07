@@ -1,6 +1,6 @@
 
 
-const { Client } = require("pg");
+const { Pool } = require("pg");
 
 //Hämtar data från .env-fil med rätt sökväg
 const path = require("path");
@@ -9,14 +9,14 @@ require("dotenv").config({ path: require("path").resolve(__dirname, "../.env")
 
 
 //Databasanslutning
-const client = new Client({
+const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
     }
 });
 
-module.exports = client;
+module.exports = pool;
 
 //Funktion för att connecta 
 async function connect() {
