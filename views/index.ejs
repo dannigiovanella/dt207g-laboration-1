@@ -40,6 +40,10 @@
 
                                 <a class="coursesyllabus" href="<%= course.syllabus %>" target="_blank">Kursplan</a>
                                 </>
+
+                                <form action="/delete/<%= course.course_id %>" method="POST">
+                                    <button class="deletebutton" type="submit">Ta bort</button>
+                                </form>
                             </div>
 
                             <% }) %>

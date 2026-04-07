@@ -77,8 +77,19 @@ cvApp.post("/add", async (request, response) => {
   }
 });
 
+//DELETE - Ta bort kurs
+cvApp.post("/delete/:id", async (request, response) => {
+  const { id } = request.params;
 
-
+  try {
+    await db.query("DELETE FROM courses WHERE course_id = $1", [id]);
+    response.redirect("/");
+    
+  } catch (error) {
+    console.log("Delete error", error);
+    response.redirect("/");
+  }
+});
 
 //Starta server
 cvApp.listen(process.env.PORT, () => {
