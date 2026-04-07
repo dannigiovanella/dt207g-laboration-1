@@ -5,7 +5,7 @@ const db = require("./db");
 
 async function createTable() {
     try {
-        await client.connect();
+        await pool.connect();
 
         await db.query(`
     CREATE TABLE IF NOT EXISTS courses (
@@ -18,8 +18,8 @@ async function createTable() {
       );
     `);
         console.log("Table created");
-    } catch (err) {
-        console.log("Error creating table", err);
+    } catch (error) {
+        console.log("Error creating table", error);
     } finally {
         await db.end();
     }
