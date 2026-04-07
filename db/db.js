@@ -16,6 +16,7 @@ const client = new Client({
     }
 });
 
+module.exports = client;
 
 //Funktion för att connecta 
 async function connect() {
