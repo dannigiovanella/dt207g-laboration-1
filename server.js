@@ -142,7 +142,9 @@ cvApp.post("/delete/:id", async (request, response) => {
 
 /////// STARTA SERVER /////
 
+const PORT = process.env.PORT || 3000;
+
 // Startar servern på en port från .env
-cvApp.listen(process.env.PORT, () => {
-  console.log("server startad på port" + "" + process.env.PORT);
+cvApp.listen(PORT, () => {
+  console.log("server startad på port" + "" + PORT);
 });
