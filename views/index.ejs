@@ -14,9 +14,10 @@
     <%- include("partials/header"); %>
 
         <main>
-            <section>
+            <section class="index">
                 <h2>Kurser</h2>
 
+                <div class="cardgrid">
                 <!--Kontroll för om kurs är inlagd-->
                 <% if (courses.length===0) { %>
                     <p>Inga kurser inlagda ännu</p>
@@ -51,6 +52,7 @@
                             </div>
 
                             <% }) %>
+                </div>
                                 <% } %>
 
             </section>
