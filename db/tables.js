@@ -1,7 +1,9 @@
 
-//Tabeller
+//LÄGG TILL TABELLER
 
 const db = require("./db");
+
+//Lägger till tabell för kursinformation
 
 async function createTable() {
     try {
@@ -25,4 +27,5 @@ async function createTable() {
     }
 }
 
+//Kör funktion för att lägga till tabell
 createTable();

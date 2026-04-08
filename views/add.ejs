@@ -15,18 +15,25 @@
 
         <main>
             <section>
-
+                //Formulär som skickas till POST/add
                 <form action="/add" method="POST">
 
+                    <!--value fyller i tidigare värde (old) om formuläret blivit fel (för att slippa skriva om allt)-->
+                    <!--class lägger till error om det finns fel på fältet-->
+                    <!--If-sats för att visa felmeddelande om inputfälten är tomma-->
+
+                    <!--Kurskod-->
                     <label for="coursecode">Kurskod</label>
                     <input id="coursecode" name="coursecode" type="text" placeholder="ex: DT200g"
                         value="<%= old?.coursecode || '' %>" class="<%= errors?.coursecode ? 'error' : '' %>">
+
                     <% if (errors?.coursecode) { %>
                         <p class="errormessage">
                             <%= errors.coursecode %>
                         </p>
                         <% } %>
 
+                            <!--Kursnamn-->
                             <label for="coursename">Kursnamn</label>
                             <input id="coursename" name="coursename" type="text" placeholder="ex: Backendutveckling"
                                 value="<%= old?.coursename || '' %>" class="<%= errors?.courname ? 'error' : '' %>">
@@ -37,12 +44,13 @@
                                 </p>
                                 <% } %>
 
+                                    <!--Progression-->
                                     <label for="progression">Progression</label>
                                     <select id="progression" name="progression" type="text" placeholder="A, B eller C"
-                                        value="<%= old?.progression || '' %>"
                                         class="<%= errors?.progression ? 'error' : '' %>">
 
-
+                                        <!--Dropdown för val av nivå-->
+                                        <!--Selected för att behålla värdet efter input (vid fel)-->
                                         <option value="">Välj progression</option>
                                         <option value="A" <%=old?.progression==="A" ? "selected" : "" %>>A
                                         </option>
@@ -70,7 +78,7 @@
                                                     <%= errors.syllabus %>
                                                 </p>
                                                 <% } %>
-
+                                                    <!--Knapp för att lägga till kurs-->
                                                     <button type="submit">Lägg till kurs</button>
 
                 </form>

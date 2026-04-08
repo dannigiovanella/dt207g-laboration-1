@@ -15,55 +15,75 @@
 
         <main>
             <article>
+                <section>
+                    <h2>Om webbplatsen</h2>
+                    <p>Denna webbplats är en enkel kursdatabas som är tänkt att fungera som ett typ av CV där användaren
+                        kan
+                        lägga till, visa och ta bort kurser. Syftet med webbapplikationen är både att skapa en
+                        fungerande
+                        lösning för att hantera kursinformation och även att få en praktisk förståelse för hur
+                        backendutveckling fungerar i kombination med en databas.</p>
+                    <p>Startsidan visar alla kurser som finns lagrade i databasen, och det finns även en sida för att
+                        lägga
+                        till nya kurser via ett formulär, samt denna sida som beskriver webbplatsen och arbetet bakom.
+                    </p>
+                </section>
 
-                <h2>Om webbplatsen</h2>
-                <p>Denna webbplats är en enkel kursdatabas som är tänkt att fungera som ett typ av CV där användaren kan
-                    lägga till, visa och ta bort kurser. Syftet med webbapplikationen är både att skapa en fungerande
-                    lösning för att hantera kursinformation och även att få en praktisk förståelse för hur
-                    backendutveckling fungerar i kombination med en databas.</p>
-                <p>Startsidan visar alla kurser som finns lagrade i databasen, och det finns även en sida för att lägga
-                    till nya kurser via ett formulär, samt denna sida som beskriver webbplatsen och arbetet bakom.</p>
+                <section>
+                    <h3>Teniker och verktyg</h3>
+                    <p>Projektet är byggt med Node.js och Express, där Express används för att hantera routing och
+                        serverlogik. För att generera HTML används EJS, som gör det möjligt att dynamiskt visa data från
+                        databasen direkt i vyerna.</p>
+                    <p>Som databas används PostgreSQL, som är hostad via Render. För att ansluta till databasen används
+                        paketet pg, där jag har använt en Pool istället för Client. Detta blev viktigt under arbetets
+                        gång
+                        då jag stötte på problem med flera samtidiga förfrågningar, vilket löstes genom att byta till
+                        Pool.
+                    </p>
+                </section>
 
-                <h3>Teniker och verktyg</h3>
-                <p>Projektet är byggt med Node.js och Express, där Express används för att hantera routing och
-                    serverlogik. För att generera HTML används EJS, som gör det möjligt att dynamiskt visa data från
-                    databasen direkt i vyerna.</p>
-                <p>Som databas används PostgreSQL, som är hostad via Render. För att ansluta till databasen används
-                    paketet pg, där jag har använt en Pool istället för Client. Detta blev viktigt under arbetets gång
-                    då jag stötte på problem med flera samtidiga förfrågningar, vilket löstes genom att byta till Pool.
-                </p>
+                <section>
+                    <h3>Funktionalitet</h3>
+                    <p></p>
+                    <ul>
+                        <li>Kurser kan läggas till i databas via ett formulär</li>
+                        <li>Alla kurser hämtas från databasen och visas på startsidan</li>
+                        <li>Kurser kan tas bort med en knapp kopplad till varje kurs</li>
+                    </ul>
+                    <p>Formuläret innehåller validering på serversidan. Istället för ett generellt felmeddelande vid
+                        tomma
+                        inmatningsfält så visas specifika fel per fält, och fält med fel markeras även visuellt med en
+                        tydligt border. Detta för att göra det tydligare för användaren vad som behöver rättas till.</p>
+                </section>
 
-                <h3>Funktionalitet</h3>
-                <p></p>
-                <ul>
-                    <li>Kurser kan läggas till i databas via ett formulär</li>
-                    <li>Alla kurser hämtas från databasen och visas på startsidan</li>
-                    <li>Kurser kan tas bort med en knapp kopplad till varje kurs</li>
-                </ul>
-                <p>Formuläret innehåller validering på serversidan. Istället för ett generellt felmeddelande vid tomma
-                    inmatningsfält så visas specifika fel per fält, och fält med fel markeras även visuellt med en
-                    tydligt border. Detta för att göra det tydligare för användaren vad som behöver rättas till.</p>
+                <section>
+                    <h3>Databas</h3>
+                    <p>Databasen är uppbyggd i PostgreSQL och innehåller en tabell för kurser. Varje kurs har ett unikt
+                        id
+                        (course_id), och information om kurskod, kursnamn, progression och kursplan. Databasen är hostad
+                        via Render, vilket innebär att webbplatsen kommunicerar med en extern databas över nätet.</p>
+                </section>
 
-                <h3>Databas</h3>
-                <p>Databasen är uppbyggd i PostgreSQL och innehåller en tabell för kurser. Varje kurs har ett unikt id
-                    (course_id), och information om kurskod, kursnamn, progression och kursplan. Databasen är hostad
-                    via Render, vilket innebär att webbplatsen kommunicerar med en extern databas över nätet.</p>
-
-                <h3>Slutsatser</h3>
-                <p>Genom denna uppgift har jag fått en bättre förståelse för hur en webbapplikation hänger ihop från
-                    backend till databas. En viktig insikt var hur känslig databaskopplingen är, och hur små misstag som
-                    tex fel sökväg till .env eller fel typ av databasanslutning kan göra att hela funktionaliteten på
-                    sidan slutar fungera.</p>
-                <p>Jag har också lärt mig hur viktigt det är att strukturera koden tydligt och att felsöka steg för
-                    steg. Många av problemen jag stötte på handlade inte om stora fel, utan om små detaljer som fel
-                    variabelnamn, fel sökvägar eller logik som låg på fel plats.</p>
-                <p>En annan viktig lärdom var skillnaden mellan att använda en Client och en Pool i PostgreSQL, där Pool
-                    visade sig vara en mer stabil lösning för en webbplatsen i mitt projekt.</p>
+                <section>
+                    <h3>Slutsatser</h3>
+                    <p>Genom denna uppgift har jag fått en bättre förståelse för hur en webbapplikation hänger ihop från
+                        backend till databas. En viktig insikt var hur känslig databaskopplingen är, och hur små misstag
+                        som
+                        tex fel sökväg till .env eller fel typ av databasanslutning kan göra att hela funktionaliteten
+                        på
+                        sidan slutar fungera.</p>
+                    <p>Jag har också lärt mig hur viktigt det är att strukturera koden tydligt och att felsöka steg för
+                        steg. Många av problemen jag stötte på handlade inte om stora fel, utan om små detaljer som fel
+                        variabelnamn, fel sökvägar eller logik som låg på fel plats.</p>
+                    <p>En annan viktig lärdom var skillnaden mellan att använda en Client och en Pool i PostgreSQL, där
+                        Pool
+                        visade sig vara en mer stabil lösning för en webbplatsen i mitt projekt.</p>
+                </section>
 
             </article>
         </main>
         <!--Footer-->
-<%- include("partials/footer"); %>
+        <%- include("partials/footer"); %>
 </body>
 
 </html>

@@ -25,22 +25,26 @@
                         <!--Finns kurs loopas dessa igenom och skrivs ut i lista-->
                         <% courses.forEach(course=> { %>
 
+                            <!--Visar kurskod-->
                             <div class="coursecard">
                                 <h3 class="coursecode">
                                     <%= course.coursecode %>
                                 </h3>
 
+                                <!--Visar kursnamn-->
                                 <p class="coursename">
                                     <%= course.coursename %>
                                 </p>
 
-                                <span class="courseprogression">
+                                <!--visar progression-->
+                                <p class="courseprogression">
                                     Progression: <%= course.progression %>
-                                </span><br>
+                                </p><br>
 
+                                <!--Visar länk till kursplan-->
                                 <a class="coursesyllabus" href="<%= course.syllabus %>" target="_blank">Kursplan</a>
-                                </>
-
+                        
+                                <!--Knapp för att ta bort kurs. Kopplat till kurs id-->
                                 <form action="/delete/<%= course.course_id %>" method="POST">
                                     <button class="deletebutton" type="submit">Ta bort</button>
                                 </form>
